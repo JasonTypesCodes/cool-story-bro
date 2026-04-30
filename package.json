@@ -1,0 +1,13 @@
+{
+  "name": "cool-story-bro",
+  "version": "1.0.0",
+  "description": "Simple Express service that responds 200 to all requests and logs request details",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "license": "Unlicense",
+  "dependencies": {
+    "express": "5.2.1"
+  }
+}
