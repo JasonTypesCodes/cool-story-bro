@@ -31,10 +31,12 @@ docker run -p 3000:3000 cool-story-bro
 
 ## Testing
 
-A `test.sh` script is included that fires a handful of requests covering different methods, paths, bodies, and a binary upload:
+A `test.sh` script is included that fires a handful of requests covering different methods, paths, bodies, and a binary upload. An optional argument sets the base URL — defaults to `http://localhost:3000`:
 
 ```bash
-./test.sh
+./test.sh                                        # http://localhost:3000
+./test.sh https://abc123.ngrok-free.app          # ngrok tunnel
+./test.sh https://myapp.azurecontainerapps.io    # Azure Container Apps
 ```
 
 Each line of output shows the HTTP status code and the request that was made:
