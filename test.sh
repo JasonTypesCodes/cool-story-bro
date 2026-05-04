@@ -29,4 +29,22 @@ curl -s -o /dev/null -w "%{http_code} GET /search?q=express&page=2\n" \
 curl -s -o /dev/null -w "%{http_code} POST /upload (binary)\n" \
   -X POST $BASE_URL/upload \
   -H "Content-Type: application/octet-stream" \
-  --data-binary @README.md
+  --data-binary @test-files/text.txt.gz
+
+curl -s -o /dev/null -w "%{http_code} POST /submit (multipart fields)\n" \
+  -X POST $BASE_URL/submit \
+  -F "username=alice" \
+  -F "message=hello world"
+
+curl -s -o /dev/null -w "%{http_code} POST /upload (multipart file)\n" \
+  -X POST $BASE_URL/upload \
+  -F "file=@test-files/text.txt;type=text/plain"
+
+curl -s -o /dev/null -w "%{http_code} POST /upload (multipart fields + file)\n" \
+  -X POST $BASE_URL/upload \
+  -F "description=test upload" \
+  -F "file=@test-files/text.txt;type=text/plain"
+
+curl -s -o /dev/null -w "%{http_code} POST /upload (multipart binary file)\n" \
+  -X POST $BASE_URL/upload \
+  -F "file=@test-files/text.txt.gz;type=application/gzip"
